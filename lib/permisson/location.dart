@@ -10,10 +10,8 @@ LocationData? Data;
 Future<void> service() async {
   _serviceEnabled = await location.requestService();
   if (!_serviceEnabled!) {
-    print("Location service not enabled");
     return;
   }
-  print("Location service enabled, checking permissions...");
   await permissionGranted();
 }
 
@@ -21,8 +19,6 @@ Future<void> service() async {
 Future<bool> permissionGranted() async {
   _permissionGranted = await location.hasPermission();
   if (_permissionGranted == PermissionStatus.granted) {
-    print("call location data");
-
     return true;
   }
 
