@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:ethio_weather/permisson/location.dart';
+import 'package:ethio_weather/weather.dart/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -40,6 +42,35 @@ class Intro1 extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
+            SizedBox(height: 50),
+            GestureDetector(
+              onTap: () async {
+                await service();
+                if (await permissionGranted()) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(),
+                    ),
+                  );
+                }
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 90, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 5, 5, 206),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  'Get Started',
+                  style: TextStyle(
+                    color: Color.fromARGB(170, 178, 178, 235),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
