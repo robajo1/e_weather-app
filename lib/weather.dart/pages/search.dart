@@ -47,7 +47,7 @@ class _SearchState extends State<Search> {
                   hintStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
-                    fontFamily: 'Roboto', // Specify your desired font family
+                    fontFamily: 'Roboto',
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -75,7 +75,7 @@ class _SearchState extends State<Search> {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
-                  fontFamily: 'Roboto', // Specify your desired font family
+                  fontFamily: 'Roboto',
                 ),
               ),
             ),

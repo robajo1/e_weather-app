@@ -5,7 +5,7 @@ class WeatherS {
   Future<Weather?> getWeather(double? latitude, double? longitude) async {
     var client = await http.Client();
     var uri = Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=api');
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=apikey');
     var response = await client.get(uri);
     if (response.statusCode == 200) {
       var json = response.body;
