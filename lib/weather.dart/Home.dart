@@ -3,6 +3,7 @@ import 'package:ethio_weather/permisson/location.dart';
 import 'package:ethio_weather/weather_service/weather_s.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -24,18 +25,18 @@ class _HomeState extends State<Home> {
   }
 
   Future<void> initialize() async {
-    await getlocation(); // Ensure location data is fetched first
-    await getweather(); // Fetch weather after location data is ready
+    await getlocation();
+    await getweather();
     setState(() {
-      isLoaded = true; // Update the state after everything is loaded
+      isLoaded = true;
     });
   }
 
   Future<void> getlocation() async {
-    await locationData(); // Fetch location data
+    await locationData();
     setState(() {
-      latitude = Data?.latitude; // Extract latitude
-      longitude = Data?.longitude; // Extract longitude
+      latitude = Data?.latitude;
+      longitude = Data?.longitude;
     });
   }
 
@@ -59,33 +60,46 @@ class _HomeState extends State<Home> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          "Todays Report",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Text(
+                            "Todays Report",
+                            style: GoogleFonts.aboreto(
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 28,
+                              ),
+                            ),
                           ),
                         ),
-                        SizedBox(width: 23),
-                        Text(
-                          WeatherData?.name ?? 'Unknown', //city name
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                        SizedBox(width: 0),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 100),
+                          child: Text(
+                            "${WeatherData!.sys.country} , ${WeatherData!.name}" ??
+                                'Unknown', //city name
+                            style: GoogleFonts.agdasima(
+                              textStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    Lottie.asset('assets/sun.json'),
+                    CheckWeather(),
                     SizedBox(
                       height: 20,
                     ),
                     Container(
                       child: Text(
                         "Weather Report",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
+                        style: GoogleFonts.aboreto(
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
@@ -93,10 +107,12 @@ class _HomeState extends State<Home> {
                       height: 20,
                     ),
                     Text(
-                      "${WeatherData?.main?.temp ?? 'N/A'}°C", //temperature
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 50,
+                      "${(WeatherData!.main.temp - 273.15).toInt() ?? 'N/A'}°C", //temperature
+                      style: GoogleFonts.agdasima(
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 65,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -105,17 +121,93 @@ class _HomeState extends State<Home> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Lottie.asset(
-                          'assets/wind.json',
-                          height: 70,
+                        Column(
+                          children: [
+                            Lottie.asset(
+                              'assets/wind.json',
+                              height: 70,
+                            ),
+                            Text(
+                              "${WeatherData!.wind.speed} m/s" ??
+                                  'N/A', //wind speed
+                              style: GoogleFonts.agdasima(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        Lottie.asset('assets/humidity.json', height: 100),
+                        Column(
+                          children: [
+                            Lottie.asset(
+                              'assets/humidity.json',
+                              height: 70,
+                            ),
+                            Text(
+                              "${WeatherData!.main.humidity} %" ??
+                                  'N/A', //humidity
+                              style: GoogleFonts.agdasima(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Lottie.asset(
+                              'assets/pressure.json',
+                              height: 50,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "${WeatherData!.main.pressure} hPa" ??
+                                  'N/A', //pressure
+                              style: GoogleFonts.agdasima(
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ],
-                ), // Show the location once data is available
+                ),
         ),
       ),
     );
+  }
+
+  Widget CheckWeather() {
+    if (WeatherData!.weather[0].main == "Clouds") {
+      return Lottie.asset(
+        'assets/cloud.json',
+        height: 350,
+      );
+    } else if (WeatherData!.weather[0].main == "Rain") {
+      return Lottie.asset(
+        'assets/rain.json',
+        height: 350,
+      );
+    } else if (WeatherData!.weather[0].main == "Clear") {
+      return Lottie.asset(
+        'assets/sun.json',
+        height: 350,
+      );
+    } else {
+      return Lottie.asset(
+        'assets/sun.json',
+        height: 350,
+      );
+    }
   }
 }
