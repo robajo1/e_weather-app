@@ -85,18 +85,16 @@ class _CurrentweatherState extends State<Currentweather> {
                     ),
                   ],
                 ),
-                CheckWeather(),
+                CheckWeather(WeatherData),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  child: Text(
-                    "Weather Report",
-                    style: GoogleFonts.aboreto(
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
+                Text(
+                  "Weather Report",
+                  style: GoogleFonts.aboreto(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -104,7 +102,7 @@ class _CurrentweatherState extends State<Currentweather> {
                   height: 20,
                 ),
                 Text(
-                  "${(WeatherData!.main.temp - 273.15).toInt() ?? 'N/A'}°C", //temperature
+                  "${(WeatherData!.main.temp - 273.15).toInt()}°C", //temperature
                   style: GoogleFonts.agdasima(
                     textStyle: TextStyle(
                       color: Colors.white,
@@ -180,28 +178,28 @@ class _CurrentweatherState extends State<Currentweather> {
             ),
     );
   }
+}
 
-  Widget CheckWeather() {
-    if (WeatherData!.weather[0].main == "Clouds") {
-      return Lottie.asset(
-        'assets/cloud.json',
-        height: 350,
-      );
-    } else if (WeatherData!.weather[0].main == "Rain") {
-      return Lottie.asset(
-        'assets/rain.json',
-        height: 350,
-      );
-    } else if (WeatherData!.weather[0].main == "Clear") {
-      return Lottie.asset(
-        'assets/sun.json',
-        height: 350,
-      );
-    } else {
-      return Lottie.asset(
-        'assets/sun.json',
-        height: 350,
-      );
-    }
+Widget CheckWeather(Weather? WeatherData) {
+  if (WeatherData!.weather[0].main == "Clouds") {
+    return Lottie.asset(
+      'assets/cloud.json',
+      height: 350,
+    );
+  } else if (WeatherData!.weather[0].main == "Rain") {
+    return Lottie.asset(
+      'assets/rain.json',
+      height: 350,
+    );
+  } else if (WeatherData!.weather[0].main == "Clear") {
+    return Lottie.asset(
+      'assets/sun.json',
+      height: 350,
+    );
+  } else {
+    return Lottie.asset(
+      'assets/sun.json',
+      height: 350,
+    );
   }
 }
