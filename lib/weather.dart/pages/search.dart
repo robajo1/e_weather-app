@@ -6,7 +6,15 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("search"),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Enter a city or country',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          suffixIcon: Icon(Icons.search),
+        ),
+      ),
     );
   }
 }
