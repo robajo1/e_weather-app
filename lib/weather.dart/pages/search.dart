@@ -19,6 +19,7 @@ class _SearchState extends State<Search> {
   Weather? _selectedWeatherData;
   bool isLoaded = false;
   String _searcherror = 'please search for a city or country';
+  String? cityname;
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +30,52 @@ class _SearchState extends State<Search> {
           Expanded(
             child: Center(
               child: TextField(
-                onSubmitted: (value) async => {
-                  await getCityCoordinates(value),
-                  await getweather(),
+                onSubmitted: (value) async {
+                  await getCityCoordinates(value);
+                  await getweather();
                   setState(() {
                     isLoaded = true;
+                  });
+                },
+                onChanged: (value) async => {
+                  setState(() {
+                    cityname = value;
                   })
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter a city or country',
+                  hintStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'Roboto', // Specify your desired font family
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide(color: Colors.white),
                   ),
                   suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.search),
+                    onPressed: () async {
+                      await getCityCoordinates(cityname!);
+                      await getweather();
+                      setState(() {
+                        isLoaded = true;
+                      });
+                    },
+                    icon: Icon(Icons.search, color: Colors.white),
                   ),
+                ),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontFamily: 'Roboto', // Specify your desired font family
                 ),
               ),
             ),
