@@ -1,7 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:ethio_weather/model/weather.dart';
 import 'package:ethio_weather/permisson/location.dart';
-import 'package:ethio_weather/weather.dart/pages/aboutUs.dart';
 import 'package:ethio_weather/weather.dart/pages/currentweather.dart';
 import 'package:ethio_weather/weather.dart/pages/search.dart';
 import 'package:ethio_weather/weather_service/weather_s.dart';
@@ -55,7 +54,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  List<Widget> page = [Currentweather(), Search(), Aboutus()];
+  List<Widget> page = [Currentweather(), Search()];
 
   @override
   Widget build(BuildContext context) {
@@ -74,10 +73,6 @@ class _HomeState extends State<Home> {
           ),
           Icon(
             Icons.search,
-            color: Color.fromARGB(255, 150, 152, 211),
-          ),
-          Icon(
-            Icons.person_pin,
             color: Color.fromARGB(255, 150, 152, 211),
           ),
         ],

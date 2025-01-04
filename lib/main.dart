@@ -1,8 +1,10 @@
 import 'package:ethio_weather/intro_page/intro1.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(
     MaterialApp(
       home: Weather(),
