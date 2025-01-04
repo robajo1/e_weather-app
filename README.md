@@ -7,7 +7,7 @@ A simple Flutter-based weather application that provides real-time weather updat
   - Dynamic UI: Beautiful and responsive design that adapts to different screen sizes.
   - Error Handling: Handles API errors and provides user-friendly messages.
 ### Technologies Used
-  - Flutter: For building the cross-platform mobile app.
+  - Flutter: For building the mobile app.
   - Dart: The programming language used in Flutter.
   - http: For making API requests.
   
