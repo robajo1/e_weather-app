@@ -1,6 +1,6 @@
-import 'package:ethio_weather/model/weather.dart';
-import 'package:ethio_weather/permisson/location.dart';
-import 'package:ethio_weather/weather_service/weather_s.dart';
+import 'package:E_Weather/model/weather.dart';
+import 'package:E_Weather/permisson/location.dart';
+import 'package:E_Weather/weather_service/weather_s.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';

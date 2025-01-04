@@ -1,12 +1,11 @@
+import 'package:E_Weather/model/weather.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:ethio_weather/model/weather.dart';
-import 'package:ethio_weather/permisson/location.dart';
-import 'package:ethio_weather/weather.dart/pages/currentweather.dart';
-import 'package:ethio_weather/weather.dart/pages/search.dart';
-import 'package:ethio_weather/weather_service/weather_s.dart';
+
+import 'package:E_Weather/permisson/location.dart';
+import 'package:E_Weather/weather.dart/pages/currentweather.dart';
+import 'package:E_Weather/weather.dart/pages/search.dart';
+import 'package:E_Weather/weather_service/weather_s.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

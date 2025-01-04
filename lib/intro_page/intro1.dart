@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:ethio_weather/permisson/location.dart';
-import 'package:ethio_weather/weather.dart/Home.dart';
+import 'package:E_Weather/permisson/location.dart';
+import 'package:E_Weather/weather.dart/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
